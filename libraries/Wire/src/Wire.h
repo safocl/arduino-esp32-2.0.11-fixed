@@ -95,10 +95,6 @@ public:
     {
         return begin(addr, -1, -1, 0);
     }
-    inline bool begin(int addr)
-    {
-        return begin(static_cast<uint8_t>(addr), -1, -1, 0);
-    }
     bool end();
 
     size_t setBufferSize(size_t bSize);
@@ -110,21 +106,11 @@ public:
     uint32_t getClock();
 
     void beginTransmission(uint16_t address);
-    void beginTransmission(uint8_t address);
-    void beginTransmission(int address);
 
     uint8_t endTransmission(bool sendStop);
     uint8_t endTransmission(void);
 
-    size_t requestFrom(uint16_t address, size_t size, bool sendStop);
-    uint8_t requestFrom(uint16_t address, uint8_t size, bool sendStop);
-    uint8_t requestFrom(uint16_t address, uint8_t size, uint8_t sendStop);
-    size_t requestFrom(uint8_t address, size_t len, bool stopBit);
-    uint8_t requestFrom(uint16_t address, uint8_t size);
-    uint8_t requestFrom(uint8_t address, uint8_t size, uint8_t sendStop);
-    uint8_t requestFrom(uint8_t address, uint8_t size);
-    uint8_t requestFrom(int address, int size, int sendStop);
-    uint8_t requestFrom(int address, int size);
+    size_t requestFrom(uint16_t address, size_t size, bool sendStop = true);
 
     size_t write(uint8_t);
     size_t write(const uint8_t *, size_t);
