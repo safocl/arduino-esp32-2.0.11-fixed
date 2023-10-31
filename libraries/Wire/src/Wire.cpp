@@ -584,16 +584,6 @@ void TwoWire::flush(void)
     //i2cFlush(num); // cleanup
 }
 
-void TwoWire::beginTransmission(int address)
-{
-    beginTransmission(static_cast<uint16_t>(address));
-}
-
-void TwoWire::beginTransmission(uint8_t address)
-{
-    beginTransmission(static_cast<uint16_t>(address));
-}
-
 uint8_t TwoWire::endTransmission(void)
 {
     return endTransmission(true);
