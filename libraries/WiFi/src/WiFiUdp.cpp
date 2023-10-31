@@ -82,7 +82,7 @@ uint8_t WiFiUDP::begin(uint16_t p){
 
 uint8_t WiFiUDP::beginMulticast(IPAddress a, uint16_t p){
   if(begin(IPAddress(INADDR_ANY), p)){
-    if(a != 0){
+    if(a){
       struct ip_mreq mreq;
       mreq.imr_multiaddr.s_addr = (in_addr_t)a;
       mreq.imr_interface.s_addr = INADDR_ANY;
@@ -111,7 +111,7 @@ void WiFiUDP::stop(){
   }
   if(udp_server == -1)
     return;
-  if(multicast_ip != 0){
+  if(multicast_ip){
     struct ip_mreq mreq;
     mreq.imr_multiaddr.s_addr = (in_addr_t)multicast_ip;
     mreq.imr_interface.s_addr = (in_addr_t)0;
